@@ -1,0 +1,4 @@
+rootProject.name = 'docy'
+include 'compiler'
+include 'annotations'
+
