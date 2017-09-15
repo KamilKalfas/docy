@@ -1,4 +1,4 @@
-package com.kamilkalfas.docky.compiler.processor.model;
+package com.kamilkalfas.docky.compiler.processor.model.dto;
 
 import javax.lang.model.element.Element;
 

@@ -1,4 +1,4 @@
-package com.kamilkalfas.docky.compiler.processor.model;
+package com.kamilkalfas.docky.compiler.processor.model.dto;
 
 import java.util.Objects;
 
