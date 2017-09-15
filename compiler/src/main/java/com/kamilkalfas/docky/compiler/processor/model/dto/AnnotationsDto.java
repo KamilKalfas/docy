@@ -1,7 +1,5 @@
 package com.kamilkalfas.docky.compiler.processor.model.dto;
 
-import javax.lang.model.element.Element;
-
 public class AnnotationsDto {
 
     public String issueNumber;
@@ -42,8 +40,8 @@ public class AnnotationsDto {
             return this;
         }
 
-        public Builder testName(Element element) {
-            this.testName = "@Test " + element.getSimpleName();
+        public Builder testName(String name) {
+            this.testName = "@Test " + name;
             return this;
         }
 
