@@ -1,0 +1,35 @@
+package com.kamilkalfas.docy.compiler;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+
+public class FileWrapper {
+
+    public Path get(String path) throws IOException {
+        return Paths.get(path);
+    }
+
+    public void deleteIfExists(Path path) throws IOException {
+        Files.deleteIfExists(path);
+    }
+
+    public void createFile(Path path) throws IOException {
+        Files.createFile(path);
+    }
+
+    public void write(Path path, byte[] content) throws IOException {
+        Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+    }
+
+    public String read(Path path) throws IOException {
+        return new String(Files.readAllBytes(path));
+    }
+
+    public void delete(Path path) throws IOException {
+        Files.delete(path);
+    }
+
+}
