@@ -1,7 +1,7 @@
-package com.kamilkalfas.docy.compiler.data.storage;
+package com.kamilkalfas.docy.compiler.env;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.IFile;
+import com.kamilkalfas.docy.compiler.contract.Store;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,42 +10,24 @@ import org.mockito.MockitoAnnotations;
 
 import java.nio.file.Path;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class ProcessedDataFileTest {
+public class EnvStoreTest {
 
     @Mock private FileWrapper mockWrapper;
 
-    private IFile cut;
+    private Store cut;
 
     @Before public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        cut = new ProcessedDataFile("testFile", mockWrapper);
+        cut = new EnvStore(mockWrapper);
     }
 
-    @Test public void createFile_when_projectName_empty() throws Exception {
-        // given
-        cut = new ProcessedDataFile("", mockWrapper);
-
-        // then
-        assertEquals(null, cut.createFile());
-    }
-
-
-    @Test public void createFile_when_projectName_empty_or_null() throws Exception {
-        // given
-        cut = new ProcessedDataFile(null, mockWrapper);
-
-        // then
-        assertEquals(null, cut.createFile());
-    }
-
-    @Test public void createFile_directory_and_file_do_non_exist() throws Exception {
+    @Test public void createFile_directory_and_file_do_not_exists() throws Exception {
         // given
         when(mockWrapper.notExists(any(Path.class))).thenReturn(true, true);
 
@@ -58,20 +40,7 @@ public class ProcessedDataFileTest {
         verify(mockWrapper, times(1)).createFile(any(Path.class));
     }
 
-    @Test public void createFile_directory_exist_but_file_do_not() throws Exception {
-        // given
-        when(mockWrapper.notExists(any(Path.class))).thenReturn(false, true);
-
-        // when
-        cut.createFile();
-
-        // then
-        verify(mockWrapper, times(2)).notExists(any(Path.class));
-        verify(mockWrapper, times(0)).createDirectory(any(Path.class));
-        verify(mockWrapper, times(1)).createFile(any(Path.class));
-    }
-
-    @Test public void createFile_directory_and_file_already_exist() throws Exception {
+    @Test public void createFile_directory_and_file_exists() throws Exception {
         // given
         when(mockWrapper.notExists(any(Path.class))).thenReturn(false, false);
 

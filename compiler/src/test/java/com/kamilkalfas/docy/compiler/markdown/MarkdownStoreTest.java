@@ -4,41 +4,29 @@ import com.kamilkalfas.docy.compiler.FileWrapper;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
 
-public class MarkdownFileTest {
+public class MarkdownStoreTest {
 
     @Mock private FileWrapper mockWrapper;
 
-    private MarkdownFile cut;
+    private MarkdownStore cut;
 
     @Before public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        cut = new MarkdownFile(mockWrapper);
+        cut = new MarkdownStore(mockWrapper);
     }
 
     @Test public void createFile() throws Exception {

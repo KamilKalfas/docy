@@ -2,7 +2,7 @@ package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kamilkalfas.docy.compiler.contract.IFile;
+import com.kamilkalfas.docy.compiler.contract.Store;
 import com.kamilkalfas.docy.compiler.contract.Repository;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
 
@@ -14,22 +14,22 @@ import java.util.List;
 
 public class ProcessedDataRepository implements Repository<List<AnnotationsDto>> {
 
+    public static final Type TYPED_TOKEN = new TypeToken<List<AnnotationsDto>>() {}.getType();
     private Gson gson;
-    private IFile storeFile;
+    private Store storeFile;
 
-    public ProcessedDataRepository(final Gson gson, final IFile storeFile) {
+    public ProcessedDataRepository(final Gson gson, final Store storeFile) {
         this.gson = gson;
         this.storeFile = storeFile;
     }
 
     @Override
-    public List<AnnotationsDto> get() {
+    public List<AnnotationsDto> get(final Path path) {
         List<AnnotationsDto> retVal = new ArrayList<>();
         try {
-            final Path path = storeFile.createFile();
             final String json = storeFile.read(path);
-            final Type typeToken = new TypeToken<List<AnnotationsDto>>() {}.getType();
-            retVal = gson.fromJson(json, typeToken);
+
+            retVal = gson.fromJson(json, TYPED_TOKEN);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

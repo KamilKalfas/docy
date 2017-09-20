@@ -3,7 +3,9 @@ package com.kamilkalfas.docy.compiler.contract;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public interface IFile {
+public interface Store {
+
+    String HOME = System.getProperty("user.dir");
 
     Path createFile() throws IOException;
 

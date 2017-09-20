@@ -1,6 +1,7 @@
 package com.kamilkalfas.docy.compiler;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,5 +39,9 @@ public class FileWrapper {
 
     public void createDirectory(Path path) throws IOException {
         Files.createDirectory(path);
+    }
+
+    public DirectoryStream<Path> newDirectoryStream(Path path) throws IOException {
+        return Files.newDirectoryStream(path);
     }
 }

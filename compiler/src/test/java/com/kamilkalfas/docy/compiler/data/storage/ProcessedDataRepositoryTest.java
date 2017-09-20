@@ -1,8 +1,7 @@
 package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.kamilkalfas.docy.compiler.contract.IFile;
+import com.kamilkalfas.docy.compiler.contract.Store;
 import com.kamilkalfas.docy.compiler.contract.Repository;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AcDto;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
@@ -11,9 +10,7 @@ import com.kamilkalfas.docy.compiler.processor.model.dto.IssueDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -39,7 +36,7 @@ import static org.powermock.api.mockito.PowerMockito.when;
 public class ProcessedDataRepositoryTest {
 
     private Gson mockGson;
-    @Mock private IFile mockStoreFile;
+    @Mock private Store mockStoreFile;
 
     private Repository<List<AnnotationsDto>> cut;
 
@@ -97,10 +94,9 @@ public class ProcessedDataRepositoryTest {
         List<AnnotationsDto> expected = prepareTestData();
 
         // when
-        List<AnnotationsDto>  actual = cut.get();
+        List<AnnotationsDto>  actual = cut.get(any(Path.class));
 
         // then
-        verify(mockStoreFile, times(1)).createFile();
         verify(mockStoreFile, times(1)).read(any(Path.class));
         verify(mockGson, times(1)).fromJson(anyString(), any(Type.class));
         assertEquals(expected.size(), actual.size());

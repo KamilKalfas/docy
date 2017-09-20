@@ -1,23 +1,19 @@
 package com.kamilkalfas.docy.compiler.markdown;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.IFile;
+import com.kamilkalfas.docy.compiler.contract.Store;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
-public class MarkdownFile implements IFile {
+public class MarkdownStore implements Store {
 
-    private static final String HOME = System.getProperty("user.dir");
     private static String FILE_NAME = "test-coverage.md";
 
     private FileWrapper wrapper;
 
-    public MarkdownFile(FileWrapper wrapper) {
+    public MarkdownStore(FileWrapper wrapper) {
         this.wrapper = wrapper;
     }
 
