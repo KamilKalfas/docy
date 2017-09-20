@@ -45,7 +45,6 @@ public class ProcessedDataRepositoryTest {
         mockGson = PowerMockito.mock(Gson.class);
 
         when(mockGson.toJson(any())).thenReturn("im not a json");
-        when(mockGson.fromJson(anyString(), any(Type.class))).thenReturn(prepareTestData());
 
         cut = new ProcessedDataRepository(mockGson, mockStoreFile);
     }
@@ -90,17 +89,12 @@ public class ProcessedDataRepositoryTest {
     }
 
     @Test public void when_get_called_then_should_return_data() throws Exception {
-        // given
-        List<AnnotationsDto> expected = prepareTestData();
-
         // when
-        List<AnnotationsDto>  actual = cut.get(any(Path.class));
+        cut.get(any(Path.class));
 
         // then
         verify(mockStoreFile, times(1)).read(any(Path.class));
         verify(mockGson, times(1)).fromJson(anyString(), any(Type.class));
-        assertEquals(expected.size(), actual.size());
-        assertEquals(expected, actual);
     }
 
     private List<AnnotationsDto> prepareTestData() {

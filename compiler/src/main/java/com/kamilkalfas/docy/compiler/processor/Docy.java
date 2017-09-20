@@ -1,5 +1,7 @@
 package com.kamilkalfas.docy.compiler.processor;
 
+import com.kamilkalfas.docy.compiler.ProjectHelper;
+
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -18,8 +20,14 @@ public class Docy extends AbstractProcessor {
     }
 
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        return false;
+    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {
+        final ProjectHelper helper = new ProjectHelper(processingEnv);
+        String projectName = helper.projectName();
+        if (null == projectName || projectName.isEmpty()) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
