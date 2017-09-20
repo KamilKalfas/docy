@@ -32,4 +32,11 @@ public class FileWrapper {
         Files.delete(path);
     }
 
+    public boolean notExists(Path path) {
+        return Files.notExists(path);
+    }
+
+    public void createDirectory(Path path) throws IOException {
+        Files.createDirectory(path);
+    }
 }
