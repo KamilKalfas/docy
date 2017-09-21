@@ -11,5 +11,6 @@ repositories {
 
 dependencies {
     compile project(path: ':annotations')
+    compile project(path: ':compiler')
     testCompile "junit:junit:4.12"
 }

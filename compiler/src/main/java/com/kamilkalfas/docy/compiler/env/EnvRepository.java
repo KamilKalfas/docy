@@ -33,16 +33,16 @@ public class EnvRepository implements Repository<ModuleInfoDto> {
 
     @Override
     public boolean put(ModuleInfoDto instance) {
-        boolean peristed;
+        boolean persisted;
         try {
             Path path = store.createFile();
             String json = gson.toJson(instance);
             store.write(path, json.getBytes());
-            peristed = true;
+            persisted = true;
         } catch (IOException e) {
             e.printStackTrace();
-            peristed = false;
+            persisted = false;
         }
-        return peristed;
+        return persisted;
     }
 }
