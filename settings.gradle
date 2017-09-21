@@ -1,6 +1,3 @@
-rootProject.name = 'docy'
 include 'compiler'
 include 'annotations'
-include 'test-module-one'
-include 'test-module-two'
 

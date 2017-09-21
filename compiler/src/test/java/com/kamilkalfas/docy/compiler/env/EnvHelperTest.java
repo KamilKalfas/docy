@@ -8,6 +8,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.easymock.EasyMock.expect;
+import static org.mockito.Mockito.when;
 import static org.powermock.api.easymock.PowerMock.mockStatic;
 import static org.powermock.api.easymock.PowerMock.replayAll;
 
@@ -29,6 +30,10 @@ public class EnvHelperTest {
 
     @Test(expected = IllegalStateException.class)
     public void getNumberOfModules_whit_not_empty_param_but_no_variable_def() throws Exception {
+        // given
+        PowerMockito.mockStatic(System.class);
+        when(System.getenv("DOCY_MODULES")).thenReturn(null);
+
         // when
         cut.getNumberOfModules("DOCY_MODULES");
     }

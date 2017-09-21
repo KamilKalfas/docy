@@ -1,10 +1,3 @@
-group 'kamilkalfas.com'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.7
-
 dependencies {
     compile project(path: ':annotations')
     implementation "com.google.code.gson:gson:2.6.2"

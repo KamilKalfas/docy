@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/annotations.iml" filepath="$PROJECT_DIR$/.idea/modules/annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/compiler.iml" filepath="$PROJECT_DIR$/.idea/modules/compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/docy.iml" filepath="$PROJECT_DIR$/.idea/modules/docy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test-module-one.iml" filepath="$PROJECT_DIR$/.idea/modules/test-module-one.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test-module-two/test-module-two.iml" filepath="$PROJECT_DIR$/.idea/modules/test-module-two/test-module-two.iml" />
     </modules>
   </component>
 </project>
