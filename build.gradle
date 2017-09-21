@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 allprojects {
-    version = "1.0"
+    version = "alpha-0.1"
     repositories {
         maven {
             url "https://maven.google.com"
