@@ -45,8 +45,7 @@ public class ProcessedDataStore implements Store {
 
     @Override
     public void write(Path filePath, byte[] stream) throws IOException {
-        boolean override = true;
-        wrapper.write(filePath, stream, override);
+        wrapper.write(filePath, stream, true);
     }
 
     @Override
