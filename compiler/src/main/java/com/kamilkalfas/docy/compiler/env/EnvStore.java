@@ -40,7 +40,7 @@ public class EnvStore implements Store {
 
     @Override
     public void write(Path filePath, byte[] stream) throws IOException {
-        fileWrapper.write(filePath, stream);
+        fileWrapper.write(filePath, stream, true);
     }
 
     @Override

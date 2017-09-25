@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 public class ProcessedDataStore implements Store {
 
-    private static final String DIR_NAME = "data";
+    private static final String DIR_NAME = ".env/data";
     private static final String EXTENSTION = ".data";
 
     public static final Path DIRECTORY = Paths.get(HOME + File.separator + DIR_NAME);
@@ -45,7 +45,8 @@ public class ProcessedDataStore implements Store {
 
     @Override
     public void write(Path filePath, byte[] stream) throws IOException {
-        wrapper.write(filePath, stream);
+        boolean override = true;
+        wrapper.write(filePath, stream, override);
     }
 
     @Override

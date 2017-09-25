@@ -55,7 +55,7 @@ public class EnvStoreTest {
 
     @Test public void delete() throws Exception {
         // when
-        cut.delete(any(Path.class));
+        cut.delete(null);
 
         // then
         verify(mockWrapper, times(1)).delete(any(Path.class));
@@ -63,10 +63,10 @@ public class EnvStoreTest {
 
     @Test public void write() throws Exception {
         // when
-        cut.write(any(Path.class), any(byte[].class));
+        cut.write(null, null);
 
         // then
-        verify(mockWrapper, times(1)).write(any(Path.class), any(byte[].class));
+        verify(mockWrapper, times(1)).write(any(Path.class), any(byte[].class), any(boolean.class));
     }
 
     @Test public void read() throws Exception {

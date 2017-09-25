@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.kamilkalfas.docy.compiler.contract.Store;
 import com.kamilkalfas.docy.compiler.contract.Repository;
+import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
 
 import java.io.IOException;
@@ -28,10 +29,9 @@ public class ProcessedDataRepository implements Repository<List<AnnotationsDto>>
         List<AnnotationsDto> retVal = new ArrayList<>();
         try {
             final String json = storeFile.read(path);
-
             retVal = gson.fromJson(json, TYPED_TOKEN);
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            LogDecorator.warning(ioe);
         }
         return retVal;
     }

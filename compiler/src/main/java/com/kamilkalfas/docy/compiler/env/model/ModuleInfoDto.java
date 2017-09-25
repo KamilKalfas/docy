@@ -29,4 +29,11 @@ public class ModuleInfoDto {
         this.currentModuleNumber +=1;
     }
 
+    @Override
+    public String toString() {
+        return "ModuleInfoDto{" +
+            "envModuleNumber=" + envModuleNumber + "\n" +
+            "currentModuleNumber=" + currentModuleNumber + "\n" +
+            '}';
+    }
 }

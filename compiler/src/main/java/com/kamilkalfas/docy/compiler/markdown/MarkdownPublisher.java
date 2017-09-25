@@ -1,7 +1,7 @@
 package com.kamilkalfas.docy.compiler.markdown;
 
-import com.kamilkalfas.docy.compiler.contract.MessageCallback;
 import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.processor.model.CriteriaModel;
 import com.kamilkalfas.docy.compiler.processor.model.DocumentModel;
 import com.kamilkalfas.docy.compiler.processor.model.FeatureModel;
@@ -15,14 +15,11 @@ public class MarkdownPublisher {
 
     private static final String TITLE = "AC Test Coverage";
     private final MarkdownController markdownController;
-    private final MessageCallback messageCallback;
     private final Store markdownStore;
 
     public MarkdownPublisher(final MarkdownController documentWriter,
-                             final MessageCallback messageCallback,
                              final Store markdownStore) {
         this.markdownController = documentWriter;
-        this.messageCallback = messageCallback;
         this.markdownStore = markdownStore;
     }
 
@@ -67,7 +64,7 @@ public class MarkdownPublisher {
                 final Path docPath = markdownStore.createFile();
                 markdownStore.write(docPath, doc.getBytes());
             } catch (Exception e) {
-                messageCallback.printMessage(Diagnostic.Kind.ERROR, e.getMessage());
+                LogDecorator.error(e.getMessage());
             }
         }
     }

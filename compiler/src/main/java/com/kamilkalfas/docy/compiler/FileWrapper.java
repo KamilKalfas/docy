@@ -22,7 +22,15 @@ public class FileWrapper {
     }
 
     public void write(Path path, byte[] content) throws IOException {
-        Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+        write(path, content, false);
+    }
+
+    public void write(Path path, byte[] content, boolean override) throws IOException {
+        if (override) {
+            Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+        } else {
+            Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+        }
     }
 
     public String read(Path path) throws IOException {

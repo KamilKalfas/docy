@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
 public class ProjectHelper {
@@ -24,7 +25,7 @@ public class ProjectHelper {
             generationForPath.delete();
             projectName = getProjectName(sourcePath);
         } catch (IOException e) {
-//            processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING, "Unable to determine source file path!");
+            processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING, "Unable to determine source file path!");
         }
         return projectName;
     }
