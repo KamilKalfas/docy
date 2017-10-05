@@ -1,7 +1,7 @@
 package com.kamilkalfas.docy.compiler.env;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,11 +15,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class EnvStoreTest {
+public class EnvFileStoreTest {
 
     @Mock private FileWrapper mockWrapper;
 
-    private Store cut;
+    private FileStore cut;
 
     @Before public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);

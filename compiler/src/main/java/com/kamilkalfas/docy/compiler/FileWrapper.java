@@ -13,8 +13,8 @@ public class FileWrapper {
         return Paths.get(path);
     }
 
-    public void deleteIfExists(Path path) throws IOException {
-        Files.deleteIfExists(path);
+    public boolean deleteIfExists(Path path) throws IOException {
+        return Files.deleteIfExists(path);
     }
 
     public void createFile(Path path) throws IOException {

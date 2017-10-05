@@ -1,7 +1,7 @@
 package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,16 +12,15 @@ import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class ProcessedDataStoreTest {
+public class ProcessedDataFileStoreTest {
 
     @Mock private FileWrapper mockWrapper;
 
-    private Store cut;
+    private FileStore cut;
 
     @Before public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);

@@ -1,6 +1,6 @@
 package com.kamilkalfas.docy.compiler.markdown;
 
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.processor.model.CriteriaModel;
 import com.kamilkalfas.docy.compiler.processor.model.DocumentModel;
@@ -9,16 +9,14 @@ import com.kamilkalfas.docy.compiler.processor.model.IssueModel;
 
 import java.nio.file.Path;
 
-import javax.tools.Diagnostic;
-
 public class MarkdownPublisher {
 
     private static final String TITLE = "AC Test Coverage";
     private final MarkdownController markdownController;
-    private final Store markdownStore;
+    private final FileStore markdownStore;
 
     public MarkdownPublisher(final MarkdownController documentWriter,
-                             final Store markdownStore) {
+                             final FileStore markdownStore) {
         this.markdownController = documentWriter;
         this.markdownStore = markdownStore;
     }
@@ -64,7 +62,7 @@ public class MarkdownPublisher {
                 final Path docPath = markdownStore.createFile();
                 markdownStore.write(docPath, doc.getBytes());
             } catch (Exception e) {
-                LogDecorator.error(e.getMessage());
+                LogDecorator.errorJson(e.getMessage());
             }
         }
     }

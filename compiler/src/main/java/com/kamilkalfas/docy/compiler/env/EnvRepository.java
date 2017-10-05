@@ -2,7 +2,7 @@ package com.kamilkalfas.docy.compiler.env;
 
 import com.google.gson.Gson;
 import com.kamilkalfas.docy.compiler.contract.Repository;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.env.model.ModuleInfoDto;
 
@@ -12,9 +12,9 @@ import java.nio.file.Path;
 public class EnvRepository implements Repository<ModuleInfoDto> {
 
     private final Gson gson;
-    private final Store store;
+    private final FileStore store;
 
-    public EnvRepository(Gson gson, Store store) {
+    public EnvRepository(Gson gson, FileStore store) {
         this.gson = gson;
         this.store = store;
     }
@@ -26,7 +26,7 @@ public class EnvRepository implements Repository<ModuleInfoDto> {
             final String json = store.read(path);
             retVal = gson.fromJson(json, ModuleInfoDto.class);
         } catch (IOException ioe) {
-            LogDecorator.warning(ioe.getMessage());
+            LogDecorator.warningJson(ioe.getMessage());
         }
         if (null == retVal) {
             retVal = ModuleInfoDto.DEFAULT;
@@ -43,7 +43,7 @@ public class EnvRepository implements Repository<ModuleInfoDto> {
             store.write(path, json.getBytes());
             persisted = true;
         } catch (IOException ioe) {
-            LogDecorator.warning(ioe.getMessage());
+            LogDecorator.warningJson(ioe.getMessage());
             persisted = false;
         }
         return persisted;

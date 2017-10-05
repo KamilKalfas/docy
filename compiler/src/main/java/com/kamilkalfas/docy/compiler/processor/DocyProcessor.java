@@ -65,7 +65,6 @@ public class DocyProcessor extends AbstractProcessor {
             Path envStoreFile = envStore.createFile();
 
             ModuleInfoDto moduleInfo = envRepository.get(envStoreFile);
-            LogDecorator.note(moduleInfo);
             if (ModuleInfoDto.DEFAULT.equals(moduleInfo)) {
                 envRepository.put(new ModuleInfoDto(definedModules));
                 moduleInfo = envRepository.get(envStoreFile);
@@ -77,6 +76,7 @@ public class DocyProcessor extends AbstractProcessor {
             processedDataRepository.put(annotationsDtos);
             moduleInfo.moduleProcessed();
             envRepository.put(moduleInfo);
+
             // assemble doc
             if (moduleInfo.getCurrentModuleNumber().equals(moduleInfo.getEnvModuleNumber())) {
                 final DataController dataController = new DataController(processedDataRepository, fileWrapper);
@@ -88,11 +88,12 @@ public class DocyProcessor extends AbstractProcessor {
                 final MarkdownPublisher publisher = new MarkdownPublisher(markdownController, markdownStore);
                 final String doc = publisher.prepare(document);
                 publisher.publish(doc);
-                dataController.clearEnv();
+
                 dataController.clearStore();
+                dataController.clearEnv();
             }
         } catch (IOException e) {
-            LogDecorator.error(e.getMessage());
+            LogDecorator.errorJson(e.getMessage());
         }
         return true;
     }

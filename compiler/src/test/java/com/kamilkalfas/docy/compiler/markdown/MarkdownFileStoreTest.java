@@ -17,7 +17,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
 
-public class MarkdownStoreTest {
+public class MarkdownFileStoreTest {
 
     @Mock private FileWrapper mockWrapper;
 
