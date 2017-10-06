@@ -1,17 +1,17 @@
 package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ProcessedDataStore implements Store {
+public class ProcessedDataStore implements FileStore {
 
-    private static final String DIR_NAME = "data";
-    private static final String EXTENSTION = ".data";
+    private static final String DIR_NAME = ".env/data";
+    private static final String EXTENSION = ".data";
 
     public static final Path DIRECTORY = Paths.get(HOME + File.separator + DIR_NAME);
 
@@ -30,7 +30,7 @@ public class ProcessedDataStore implements Store {
             if (wrapper.notExists(DIRECTORY)) {
                 wrapper.createDirectory(DIRECTORY);
             }
-            path = wrapper.get(HOME + File.separator + DIR_NAME + File.separator + fileName + EXTENSTION);
+            path = wrapper.get(HOME + File.separator + DIR_NAME + File.separator + fileName + EXTENSION);
             if (wrapper.notExists(path)) {
                 wrapper.createFile(path);
             }
@@ -45,7 +45,7 @@ public class ProcessedDataStore implements Store {
 
     @Override
     public void write(Path filePath, byte[] stream) throws IOException {
-        wrapper.write(filePath, stream);
+        wrapper.write(filePath, stream, true);
     }
 
     @Override

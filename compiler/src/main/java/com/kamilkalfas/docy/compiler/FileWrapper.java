@@ -13,8 +13,8 @@ public class FileWrapper {
         return Paths.get(path);
     }
 
-    public void deleteIfExists(Path path) throws IOException {
-        Files.deleteIfExists(path);
+    public boolean deleteIfExists(Path path) throws IOException {
+        return Files.deleteIfExists(path);
     }
 
     public void createFile(Path path) throws IOException {
@@ -22,7 +22,15 @@ public class FileWrapper {
     }
 
     public void write(Path path, byte[] content) throws IOException {
-        Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+        write(path, content, false);
+    }
+
+    public void write(Path path, byte[] content, boolean override) throws IOException {
+        if (override) {
+            Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+        } else {
+            Files.write(path, content, StandardOpenOption.WRITE, StandardOpenOption.APPEND);
+        }
     }
 
     public String read(Path path) throws IOException {

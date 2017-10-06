@@ -1,14 +1,14 @@
 package com.kamilkalfas.docy.compiler.env;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class EnvStore implements Store {
+public class EnvStore implements FileStore {
     private static final String DIR_NAME = ".env";
     private static final String FILE_NAME = "modules.data";
     private static final String EXTENSTION = ".data";
@@ -40,7 +40,7 @@ public class EnvStore implements Store {
 
     @Override
     public void write(Path filePath, byte[] stream) throws IOException {
-        fileWrapper.write(filePath, stream);
+        fileWrapper.write(filePath, stream, true);
     }
 
     @Override

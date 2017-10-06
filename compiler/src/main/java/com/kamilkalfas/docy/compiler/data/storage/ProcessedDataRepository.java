@@ -2,8 +2,9 @@ package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 import com.kamilkalfas.docy.compiler.contract.Repository;
+import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
 
 import java.io.IOException;
@@ -16,9 +17,9 @@ public class ProcessedDataRepository implements Repository<List<AnnotationsDto>>
 
     public static final Type TYPED_TOKEN = new TypeToken<List<AnnotationsDto>>() {}.getType();
     private Gson gson;
-    private Store storeFile;
+    private FileStore storeFile;
 
-    public ProcessedDataRepository(final Gson gson, final Store storeFile) {
+    public ProcessedDataRepository(final Gson gson, final FileStore storeFile) {
         this.gson = gson;
         this.storeFile = storeFile;
     }
@@ -28,10 +29,9 @@ public class ProcessedDataRepository implements Repository<List<AnnotationsDto>>
         List<AnnotationsDto> retVal = new ArrayList<>();
         try {
             final String json = storeFile.read(path);
-
             retVal = gson.fromJson(json, TYPED_TOKEN);
         } catch (IOException ioe) {
-            ioe.printStackTrace();
+            LogDecorator.warningJson(ioe);
         }
         return retVal;
     }

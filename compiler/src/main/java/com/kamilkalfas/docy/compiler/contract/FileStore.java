@@ -3,7 +3,7 @@ package com.kamilkalfas.docy.compiler.contract;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public interface Store {
+public interface FileStore {
 
     String HOME = System.getProperty("user.dir");
 

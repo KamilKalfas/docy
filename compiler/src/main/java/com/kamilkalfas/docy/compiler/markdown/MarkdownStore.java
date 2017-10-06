@@ -1,13 +1,13 @@
 package com.kamilkalfas.docy.compiler.markdown;
 
 import com.kamilkalfas.docy.compiler.FileWrapper;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class MarkdownStore implements Store {
+public class MarkdownStore implements FileStore {
 
     private static String FILE_NAME = "test-coverage.md";
 

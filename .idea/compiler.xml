@@ -2,8 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="compiler" target="1.7" />
-      <module name="docy" target="1.7" />
+      <module name="annotations_main" target="1.7" />
+      <module name="annotations_test" target="1.7" />
+      <module name="compiler_main" target="1.7" />
+      <module name="compiler_test" target="1.7" />
+      <module name="docy_main" target="1.8" />
+      <module name="docy_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

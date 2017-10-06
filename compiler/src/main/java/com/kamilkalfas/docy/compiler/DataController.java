@@ -3,6 +3,7 @@ package com.kamilkalfas.docy.compiler;
 import com.kamilkalfas.docy.compiler.contract.DataManager;
 import com.kamilkalfas.docy.compiler.contract.Repository;
 import com.kamilkalfas.docy.compiler.data.storage.ProcessedDataStore;
+import com.kamilkalfas.docy.compiler.debug.tools.LogDecorator;
 import com.kamilkalfas.docy.compiler.env.EnvStore;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
 

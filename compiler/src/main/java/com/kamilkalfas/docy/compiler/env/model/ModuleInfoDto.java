@@ -14,7 +14,7 @@ public class ModuleInfoDto {
 
     public ModuleInfoDto(int envModuleNumber) {
         this.envModuleNumber = envModuleNumber;
-        this.currentModuleNumber = 1;
+        this.currentModuleNumber = 0;
     }
 
     public Integer getEnvModuleNumber() {
@@ -29,4 +29,11 @@ public class ModuleInfoDto {
         this.currentModuleNumber +=1;
     }
 
+    @Override
+    public String toString() {
+        return "ModuleInfoDto{" +
+            "envModuleNumber=" + envModuleNumber + "\n" +
+            "currentModuleNumber=" + currentModuleNumber + "\n" +
+            '}';
+    }
 }

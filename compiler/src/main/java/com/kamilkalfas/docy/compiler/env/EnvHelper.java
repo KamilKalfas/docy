@@ -11,7 +11,7 @@ public class EnvHelper {
         }
         final String val = System.getenv(var);
         if (null == val || val.isEmpty()) {
-            throw new IllegalStateException("Variable not defined");
+            throw new IllegalStateException("Variable DOCY_MODULES not defined!");
         }
         return Integer.valueOf(val);
     }

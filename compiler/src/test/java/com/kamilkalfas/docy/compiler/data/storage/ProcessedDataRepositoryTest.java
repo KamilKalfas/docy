@@ -1,7 +1,7 @@
 package com.kamilkalfas.docy.compiler.data.storage;
 
 import com.google.gson.Gson;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 import com.kamilkalfas.docy.compiler.contract.Repository;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AcDto;
 import com.kamilkalfas.docy.compiler.processor.model.dto.AnnotationsDto;
@@ -36,7 +36,7 @@ import static org.powermock.api.mockito.PowerMockito.when;
 public class ProcessedDataRepositoryTest {
 
     private Gson mockGson;
-    @Mock private Store mockStoreFile;
+    @Mock private FileStore mockStoreFile;
 
     private Repository<List<AnnotationsDto>> cut;
 

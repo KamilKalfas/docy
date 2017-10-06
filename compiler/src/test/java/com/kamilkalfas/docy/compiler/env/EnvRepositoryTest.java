@@ -2,7 +2,7 @@ package com.kamilkalfas.docy.compiler.env;
 
 import com.google.gson.Gson;
 import com.kamilkalfas.docy.compiler.contract.Repository;
-import com.kamilkalfas.docy.compiler.contract.Store;
+import com.kamilkalfas.docy.compiler.contract.FileStore;
 import com.kamilkalfas.docy.compiler.env.model.ModuleInfoDto;
 
 import org.junit.Before;
@@ -29,7 +29,7 @@ import static org.powermock.api.mockito.PowerMockito.when;
 public class EnvRepositoryTest {
 
     private Gson mockGson;
-    @Mock private Store mockStore;
+    @Mock private FileStore mockStore;
 
     private Repository<ModuleInfoDto> cut;
 
