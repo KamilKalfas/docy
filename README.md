@@ -41,7 +41,7 @@ And add dependencies
 ```groovy
 dependencies {
       ...
-      testAnnotationProcessor 'com.github.KamilKalfas.docy:compiler:0.0.4'
-      testImplementation 'com.github.KamilKalfas.docy:annotations:0.0.4'
+      testAnnotationProcessor 'com.github.KamilKalfas.docy:compiler:0.0.5'
+      testImplementation 'com.github.KamilKalfas.docy:annotations:0.0.5'
 }
 ```
