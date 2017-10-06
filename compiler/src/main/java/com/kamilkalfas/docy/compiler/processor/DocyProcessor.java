@@ -37,7 +37,7 @@ import javax.lang.model.element.TypeElement;
 @SupportedAnnotationTypes( {"com.kamilkalfas.docy.annotations.BDD"})
 public class DocyProcessor extends AbstractProcessor {
 
-    private static final Boolean DEBUG = true;
+    private static final Boolean DEBUG = false;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
